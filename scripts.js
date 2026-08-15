@@ -29,15 +29,27 @@ function getComputerChoice() {
 
 
 function getHumanChoice() {
-    console.log(`Enter the number of your selection 1, 2, or 3:
-1. rock 
-2. paper 
-3. scissors
+    console.log(`Enter the number of your selection 0, 1, or 2:
+0. rock 
+1. paper 
+2. scissors
 `);
-   const answer = prompt().trim();
-   console.log(answer);
+   const answer = Number(prompt().trim());
+   switch(answer) {
+        case 0:
+            return "rock"
+        break;
+        case 1:
+            return "paper"
+        break;
+        case 2:
+            return "scissors"
+        break;
+        default:
+        break;
+    }
    
 }
 
 
-getHumanChoice()
+console.log(getHumanChoice());
