@@ -25,5 +25,19 @@ function getComputerChoice() {
     }
 }
 
+/* create function getHumanChoice which obtains human inputted choice via prompt method */
 
-console.log(getComputerChoice());
+
+function getHumanChoice() {
+    console.log(`Enter the number of your selection 1, 2, or 3:
+1. rock 
+2. paper 
+3. scissors
+`);
+   const answer = prompt().trim();
+   console.log(answer);
+   
+}
+
+
+getHumanChoice()
