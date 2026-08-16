@@ -27,11 +27,11 @@ function reportInvalidHumanChoice() {
 function getHumanChoice() {
     let answer;
     while (true) {
-            console.log(`Enter the number of your selection 0, 1, or 2:
-0. rock 
-1. paper 
-2. scissors
-`)
+        console.log("Enter the number of your selection 0, 1, or 2:");
+        console.log("0. rock");
+        console.log("1. paper");
+        console.log("2. sciessors");
+
         answer = prompt();
         /* if answer is null we cannot call trim() */
         if (answer == null) {
@@ -39,7 +39,7 @@ function getHumanChoice() {
             continue;
         }
         answer = answer.trim();
-        /* if answer is empty string or not a valid game selection */
+        /* answer is empty string if only enterKey or some "white space characters"+enterKey aretyped, check for this and otherwise check if not a valid game selection */
         if (answer == "" || (answer != "0" && answer != "1" && answer != "2")){
             reportInvalidHumanChoice();
             continue;
@@ -67,7 +67,7 @@ function playGame(){
     }
     
     showWinnerOfGame();
-    /* todo: revise the else for explicitness */
+
     function playRound(humanChoice, computerChoice){
             
             if (humanChoice == "rock"){
@@ -102,7 +102,7 @@ function playGame(){
                         break;
                 }
 
-            } else /* scissors */{
+            } else { //humanChoice == "sciessors"
                 switch(computerChoice){
                     case "paper":
                         humanScore+=1;
