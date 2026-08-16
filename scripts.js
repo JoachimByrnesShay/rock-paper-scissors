@@ -50,13 +50,20 @@ function getHumanChoice() {
 function playGame(){
     let humanScore = 0;
     let computerScore = 0;
-    playRound(getHumanChoice(), getComputerChoice());
-    console.log(humanScore)
-    console.log(computerScore)
+    let round = 1;
+    while (round <= 5){
+        console.log("round# " + round);
+        console.log(`score human: ${humanScore}
+score computer: ${computerScore}`)
+        playRound(getHumanChoice(), getComputerChoice());
+    }
+    
+    
 
 
     /* todo: revise the else for explicitness and create controls so only 0,1,2 is able to be selected */
     function playRound(humanChoice, computerChoice){
+            round += 1;
             if (humanChoice == "rock"){
                 switch(computerChoice) {
                     case "scissors":
@@ -68,7 +75,8 @@ function playGame(){
                         console.log("You lose. Paper beats rock.");
                         break;
                     default:
-                        console.log("its a tie");
+                        console.log("its a tie, so we'll redo the round");
+                        round -= 1;
                         break;
                 }
 
@@ -83,7 +91,8 @@ function playGame(){
                         console.log("You lose. Scissors beats paper.")
                         break;
                     default:
-                        console.log("its a tie")
+                        console.log("its a tie, so we'll redo the round")
+                        round -= 1;
                         break;
                 }
 
@@ -98,7 +107,8 @@ function playGame(){
                         console.log("You lose. Rock beats scissors.");
                         break;
                     default:
-                        console.log("its a tie")
+                        console.log("its a tie, so we'll redo the round")
+                        round -= 1;
                         break;
                 }
             }
