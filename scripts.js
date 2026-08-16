@@ -1,69 +1,75 @@
-
+function translateAnswerToGameWord(answer) {
+    switch(answer) {
+        case 0:
+            return "rock"
+        break;
+        case 1:
+            return "paper"
+        break;
+        case 2:
+            return "scissors"
+        break;
+        default:
+        break;
+    }
+}
 
 function getComputerChoice() {
     const LIMIT = 3;
     const index = Math.floor(Math.random() * LIMIT);
-    switch(index) {
-        case 0:
-            return "rock"
-        break;
-        case 1:
-            return "paper"
-        break;
-        case 2:
-            return "scissors"
-        break;
-        default:
-        break;
-    }
+    return translateAnswerToGameWord(index);
 }
 
-/* create function getHumanChoice which obtains human inputted choice via prompt method */
-/* refactor by breaking out the common switch logic later */
+function reportInvalidHumanChoice() {
+    console.log("invalid answer: enter only 0, 1, or 2");
+}
+
 function getHumanChoice() {
-    console.log(`Enter the number of your selection 0, 1, or 2:
+    let answer;
+    while (true) {
+            console.log(`Enter the number of your selection 0, 1, or 2:
 0. rock 
 1. paper 
 2. scissors
-`);
-   const answer = Number(prompt().trim());
-   switch(answer) {
-        case 0:
-            return "rock"
-        break;
-        case 1:
-            return "paper"
-        break;
-        case 2:
-            return "scissors"
-        break;
-        default:
+`)
+        answer = prompt();
+        /* if answer is null we cannot call trim() */
+        if (answer == null) {
+            reportInvalidHumanChoice();
+            continue;
+        }
+        answer = answer.trim();
+        /* if answer is empty string or not a valid game selection */
+        if (answer == "" || (answer != "0" && answer != "1" && answer != "2")){
+            reportInvalidHumanChoice();
+            continue;
+        }
+        console.log(answer);
         break;
     }
-   
+    return translateAnswerToGameWord(Number(answer));
 }
 
+function showWinnerOfGame() {
+    console.log("PLACEHOLDER:   to do--- write the showWinnerOfGame function");
+}
 
-
-/* todo: revise playgame tp run 5 rounds of the game  */
-/* todo: some refactoring */
 function playGame(){
     let humanScore = 0;
     let computerScore = 0;
     let round = 1;
     while (round <= 5){
         console.log("round# " + round);
-        console.log(`score human: ${humanScore}
-score computer: ${computerScore}`)
+        console.log(`score human: ${humanScore}`);
+        console.log(`score computer: ${computerScore}`)
         playRound(getHumanChoice(), getComputerChoice());
+        round += 1;
     }
     
-    
-
-
-    /* todo: revise the else for explicitness and create controls so only 0,1,2 is able to be selected */
+    showWinnerOfGame();
+    /* todo: revise the else for explicitness */
     function playRound(humanChoice, computerChoice){
-            round += 1;
+            
             if (humanChoice == "rock"){
                 switch(computerChoice) {
                     case "scissors":
@@ -115,5 +121,11 @@ score computer: ${computerScore}`)
     }
 }
 
-playGame();
+console.log("ready to start?");
+let result = prompt();
+if (result.toLowerCase() == "y"){
+    playGame();
+}
+
+
 
