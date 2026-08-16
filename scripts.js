@@ -1,5 +1,4 @@
-let humanScore = 0;
-let computerScore = 0;
+
 
 function getComputerChoice() {
     const LIMIT = 3;
@@ -44,86 +43,67 @@ function getHumanChoice() {
    
 }
 
-/* 
 
-Rock beats scissors and loses to paper.
-Paper beats rock, but loses to scissors
-Scissors beat paper but loses to rock
-*/
 
-/*
-computer human vs computer choices 
-if human choose rock:
-    if computer choose scissors:
-        human wins 
-    else if computer choose paper:
-        human loses, computer wins
-    else tie 
-if human choose paper:
-    if computer choose rock:
-        human wins
-    if computer choose scissors:
-        human loses, computer wins
-    else:
-        tie 
-if human choose scissors:
-    if computer choose paper:
-         human wins 
-    if computer choose rock:
-         human loses, computer wins
-    else:
-       tie
-*/
-function playRound(humanChoice, computerChoice){
+/* todo: revise playgame tp run 5 rounds of the game  */
+/* todo: some refactoring */
+function playGame(){
+    let humanScore = 0;
+    let computerScore = 0;
+    playRound(getHumanChoice(), getComputerChoice());
+    console.log(humanScore)
+    console.log(computerScore)
 
-    if (humanChoice == "rock"){
-        switch(computerChoice) {
-            case "scissors":
-                humanScore+=1;
-                console.log("You win! Rock beats scissors!");
-                break;
-            case "paper":
-                computerScore+=1;
-                console.log("You lose. Paper beats rock.");
-                break;
-            default:
-                console.log("its a tie");
-                break;
-        }
 
-    } else if (humanChoice == "paper"){
-        switch(computerChoice) {
-            case "rock":
-                humanScore+=1;
-                console.log("You win! Paper beats rock.");
-                break;
-            case "scissors":
-                computerScore+=1;
-                console.log("You lose. Scissors beats paper.")
-                break;
-            default:
-                console.log("its a tie")
-                break;
-        }
+    /* todo: revise the else for explicitness and create controls so only 0,1,2 is able to be selected */
+    function playRound(humanChoice, computerChoice){
+            if (humanChoice == "rock"){
+                switch(computerChoice) {
+                    case "scissors":
+                        humanScore+=1;
+                        console.log("You win! Rock beats scissors!");
+                        break;
+                    case "paper":
+                        computerScore+=1;
+                        console.log("You lose. Paper beats rock.");
+                        break;
+                    default:
+                        console.log("its a tie");
+                        break;
+                }
 
-    } else /* scissors */{
-        switch(computerChoice){
-            case "paper":
-                humanScore+=1;
-                console.log("You win! Scissors beats paper.")
-                break;
-            case "rock":
-                computerScore+=1;
-                console.log("You lose. Rock beats scissors.");
-                break;
-            default:
-                console.log("its a tie")
-                break;
-        }
+            } else if (humanChoice == "paper"){
+                switch(computerChoice) {
+                    case "rock":
+                        humanScore+=1;
+                        console.log("You win! Paper beats rock.");
+                        break;
+                    case "scissors":
+                        computerScore+=1;
+                        console.log("You lose. Scissors beats paper.")
+                        break;
+                    default:
+                        console.log("its a tie")
+                        break;
+                }
+
+            } else /* scissors */{
+                switch(computerChoice){
+                    case "paper":
+                        humanScore+=1;
+                        console.log("You win! Scissors beats paper.")
+                        break;
+                    case "rock":
+                        computerScore+=1;
+                        console.log("You lose. Rock beats scissors.");
+                        break;
+                    default:
+                        console.log("its a tie")
+                        break;
+                }
+            }
     }
-
 }
 
-playRound(getHumanChoice(), getComputerChoice());
-console.log(humanScore)
-console.log(computerScore)
+playGame();
+
