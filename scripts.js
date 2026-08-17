@@ -1,3 +1,4 @@
+
 function translateAnswerToGameWord(answer) {
     switch(answer) {
         case 0:
@@ -50,10 +51,6 @@ function getHumanChoice() {
     return translateAnswerToGameWord(Number(answer));
 }
 
-function showWinnerOfGame() {
-    console.log("PLACEHOLDER:   to do--- write the showWinnerOfGame function");
-}
-
 function playGame(){
     let humanScore = 0;
     let computerScore = 0;
@@ -67,6 +64,16 @@ function playGame(){
     }
     
     showWinnerOfGame();
+
+    function showWinnerOfGame() {
+        if (humanScore > computerScore){
+            console.log("YOU are the winner.  You beat the computer!");
+        } else {
+            console.log("THE COMPUTER is the winner.  It beat you.");
+        }
+        console.log(`Your score: ${humanScore}`);
+        console.log(`Computer score: ${computerScore}`);
+    }
 
     function playRound(humanChoice, computerChoice){
             
