@@ -31,7 +31,7 @@ function getHumanChoice() {
         console.log("Enter the number of your selection 0, 1, or 2:");
         console.log("0. rock");
         console.log("1. paper");
-        console.log("2. sciessors");
+        console.log("2. scissors");
 
         answer = prompt();
         /* if answer is null we cannot call trim() */
@@ -45,9 +45,11 @@ function getHumanChoice() {
             reportInvalidHumanChoice();
             continue;
         }
-        console.log(answer);
+        console.log("\n************");
+        console.log(`You selected: ${translateAnswerToGameWord(Number(answer))}`);
         break;
     }
+    
     return translateAnswerToGameWord(Number(answer));
 }
 
@@ -56,9 +58,9 @@ function playGame(){
     let computerScore = 0;
     let round = 1;
     while (round <= 5){
+        console.log("\n************")
         console.log("round# " + round);
-        console.log(`score human: ${humanScore}`);
-        console.log(`score computer: ${computerScore}`)
+
         playRound(getHumanChoice(), getComputerChoice());
         round += 1;
     }
@@ -66,6 +68,9 @@ function playGame(){
     showWinnerOfGame();
 
     function showWinnerOfGame() {
+        console.log("\n*********************************");
+        console.log("all 5 rounds have been completed!");
+        console.log("*********************************\n");
         if (humanScore > computerScore){
             console.log("YOU are the winner.  You beat the computer!");
         } else {
@@ -125,6 +130,8 @@ function playGame(){
                         break;
                 }
             }
+            console.log(`current score human: ${humanScore}`);
+            console.log(`current score computer: ${computerScore}`)
     }
 }
 
