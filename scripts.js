@@ -21,24 +21,38 @@ function createUI() {
 
         document.body.append(button);
     })
+
+    const resultDiv = document.createElement("div");
+    resultDiv.classList.add("results");
+    document.body.append(resultDiv);
+}
+
+function displayResult(msg) {
+    const resultDiv = document.querySelector(".results");
+    const p = document.createElement("p");
+    p.textContent = msg;
+    resultDiv.append(p);
 }
 
 function playRound(playerSelection){
 
             const computerSelection = getComputerSelection();
+
+            // deliberately not using a dictionary/hash in order 
+            // to keep within the spirit of the progression here.
             
             if (playerSelection == "rock"){
                 switch(computerSelection) {
                     case "scissors":
                         playerScore+=1;
-                        console.log("You win! Rock beats scissors!");
+                        displayResult("You win! Rock beats scissors!");
                         break;
                     case "paper":
                         computerScore+=1;
-                        console.log("You lose. Paper beats rock.");
+                        displayResult("You lose. Paper beats rock.");
                         break;
                     default:
-                        console.log("its a tie, so we'll redo the round");
+                        displayResult("its a tie, so we'll redo the round");
                         round -= 1;
                         break;
                 }
@@ -47,14 +61,14 @@ function playRound(playerSelection){
                 switch(computerSelection) {
                     case "rock":
                         playerScore+=1;
-                        console.log("You win! Paper beats rock.");
+                        displayResult("You win! Paper beats rock.");
                         break;
                     case "scissors":
                         computerScore+=1;
-                        console.log("You lose. Scissors beats paper.")
+                        displayResult("You lose. Scissors beats paper.")
                         break;
                     default:
-                        console.log("its a tie, so we'll redo the round")
+                        displayResult("its a tie, so we'll redo the round")
                         round -= 1;
                         break;
                 }
@@ -63,20 +77,20 @@ function playRound(playerSelection){
                 switch(computerSelection){
                     case "paper":
                         playerScore+=1;
-                        console.log("You win! Scissors beats paper.")
+                        displayResult("You win! Scissors beats paper.")
                         break;
                     case "rock":
                         computerScore+=1;
-                        console.log("You lose. Rock beats scissors.");
+                        displayResult("You lose. Rock beats scissors.");
                         break;
                     default:
-                        console.log("its a tie, so we'll redo the round")
+                        displayResult("its a tie, so we'll redo the round")
                         round -= 1;
                         break;
                 }
             }
-            console.log(`current score human: ${playerScore}`);
-            console.log(`current score computer: ${computerScore}`)
+            displayResult(`current score human: ${playerScore}`);
+            displayResult(`current score computer: ${computerScore}`)
     }
 
 
@@ -84,8 +98,8 @@ function playGame(){
 
       createUI();
     // while (round <= 5){
-    //     console.log("\n************")
-    //     console.log("round# " + round);
+    //     displayResult("\n************")
+    //     displayResult("round# " + round);
 
     //     round += 1;
     // }
@@ -93,16 +107,16 @@ function playGame(){
     // showWinnerOfGame();
 
     // function showWinnerOfGame() {
-    //     console.log("\n*********************************");
-    //     console.log("all 5 rounds have been completed!");
-    //     console.log("*********************************\n");
+    //     displayResult("\n*********************************");
+    //     displayResult("all 5 rounds have been completed!");
+    //     displayResult("*********************************\n");
     //     if (playerScore > computerScore){
-    //         console.log("YOU are the winner.  You beat the computer!");
+    //         displayResult("YOU are the winner.  You beat the computer!");
     //     } else {
-    //         console.log("THE COMPUTER is the winner.  It beat you.");
+    //         displayResult("THE COMPUTER is the winner.  It beat you.");
     //     }
-    //     console.log(`Your score: ${playerScore}`);
-    //     console.log(`Computer score: ${computerScore}`);
+    //     displayResult(`Your score: ${playerScore}`);
+    //     displayResult(`Computer score: ${computerScore}`);
     // }    
 }
 
