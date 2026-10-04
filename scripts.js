@@ -135,11 +135,5 @@ function playGame(){
     }
 }
 
-console.log("ready to start?");
-let result = prompt();
-if (result.toLowerCase() == "y"){
-    playGame();
-}
 
-
-
+playGame();
